@@ -22,6 +22,11 @@ angular
         main.reps = data;
       });
     };
+    main.searchRepsByState = function (state) {
+      reps.repsByState(state).then(function (data) {
+        main.reps = data;
+      });
+    };
   });
 
 angular
@@ -42,7 +47,13 @@ angular
           .then(function (response) {
             return response.data;
           });
-      }
+      },
+      repsByState: function (state) {
+        return $http
+          .get(host + '/reps/by-state/' + state)
+          .then(function (response) {
+            return response.data;
+
     };
   });
 
